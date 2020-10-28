@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "fishingapp-36472": {
+      "hosting": {
+        "FishingAppAngular": [
+          "fishingapp-36472"
+        ]
+      }
+    }
+  }
+}

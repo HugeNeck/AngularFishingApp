@@ -15,7 +15,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-const firebaseConfig = {
+
+const firebase = {
   apiKey: "AIzaSyAof-ZK4ea9TXcP_5zmVWD1ZMJSvrR8mHw",
   authDomain: "fishingapp-36472.firebaseapp.com",
   databaseURL: "https://fishingapp-36472.firebaseio.com",
@@ -24,7 +25,7 @@ const firebaseConfig = {
   messagingSenderId: "356887152571",
   appId: "1:356887152571:web:9cec8bf82d6c3fcfb2669e",
   measurementId: "G-549XVJ90Y3"
-};
+}
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ const firebaseConfig = {
     AppRoutingModule,
     NoopAnimationsModule,
     MatButtonModule,
-    AngularFireModule.initializeApp(firebaseConfig),,
+    AngularFireModule.initializeApp(firebase),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     AngularFireAuthModule
