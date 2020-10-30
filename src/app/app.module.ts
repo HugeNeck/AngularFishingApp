@@ -14,6 +14,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { CatchItemComponent } from './livewell/catch-item/catch-item.component';
 
 
 const firebase = {
@@ -32,7 +33,8 @@ const firebase = {
     AppComponent,
     ReplaceComponent,
     LivewellComponent,
-    ChooseFisherComponent
+    ChooseFisherComponent,
+    CatchItemComponent
   ],
   imports: [
     BrowserModule,
