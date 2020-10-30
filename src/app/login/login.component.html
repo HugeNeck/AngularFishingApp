@@ -1,23 +1,28 @@
 <div>
-<h1 class="toolbar">Please Login to LiveWell App</h1>
 <div class="container"
-*ngIf="isLoggedIn; then thenBlock; else elseBlock"></div> 
+*ngIf="!isLoggedIn; then thenBlock; else elseBlock"></div> 
 
-<div>
-    <ng-template #thenBlock>
-    <mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
-    <input matInput>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-     <mat-label>Password</mat-label>
-    <input matInput>
-    </mat-form-field> 
+<ng-template #thenBlock>
+    <h1 class="toolbar">Please Login to LiveWell App</h1>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input name="email" ngModel matInput type="email">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input name = "password" ngModel matInput type="text">
+        </mat-form-field> 
+        <br>
+        <button mat-raised-button type="submit">
+           Login
+        </button>
+    </form>
 </ng-template>
 
 <ng-template #elseBlock>
 <app-root></app-root>
 </ng-template>
-</div>
 
 </div>

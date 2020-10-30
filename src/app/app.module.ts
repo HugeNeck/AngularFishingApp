@@ -7,6 +7,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field'
 
 import { LivewellComponent } from './livewell/livewell.component';
 import { ChooseFisherComponent } from './choose-fisher/choose-fisher.component';
@@ -18,7 +19,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LoginComponent } from './login/login.component';
 
-
+import {FormsModule} from '@angular/forms'
 
 const firebase = {
   apiKey: "AIzaSyAof-ZK4ea9TXcP_5zmVWD1ZMJSvrR8mHw",
@@ -46,6 +47,8 @@ const firebase = {
     NoopAnimationsModule,
     MatButtonModule,
     MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
     AngularFireModule.initializeApp(firebase),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
