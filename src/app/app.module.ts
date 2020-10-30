@@ -1,20 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReplaceComponent } from './replace/replace.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+
 import { LivewellComponent } from './livewell/livewell.component';
 import { ChooseFisherComponent } from './choose-fisher/choose-fisher.component';
+import { CatchItemComponent } from './livewell/catch-item/catch-item.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { CatchItemComponent } from './livewell/catch-item/catch-item.component';
+import { LoginComponent } from './login/login.component';
+
 
 
 const firebase = {
@@ -30,6 +33,7 @@ const firebase = {
 
 @NgModule({
   declarations: [
+    LoginComponent,
     AppComponent,
     ReplaceComponent,
     LivewellComponent,
@@ -41,12 +45,13 @@ const firebase = {
     AppRoutingModule,
     NoopAnimationsModule,
     MatButtonModule,
+    MatInputModule,
     AngularFireModule.initializeApp(firebase),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     AngularFireAuthModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [LoginComponent]
 })
 export class AppModule { }

@@ -11,3 +11,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     font-weight: bolder;
   }
 
+  .toolbar {
+    background-color: #416e33;
+    color: red;
+    font-weight: bolder;
+}
