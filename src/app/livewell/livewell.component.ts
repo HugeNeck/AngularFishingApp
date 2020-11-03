@@ -17,7 +17,7 @@ export class LivewellComponent implements OnInit {
   constructor(private firebaseConnection:FirebaseConnectionService) { 
     this.firebaseConnection.getCatches().subscribe(
         catches => {
-          this.catches = catches as CatchModel[]
+          this.catches = catches
         }
     )
   }
