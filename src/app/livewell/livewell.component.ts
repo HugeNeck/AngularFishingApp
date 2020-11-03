@@ -11,11 +11,15 @@ import { CatchModel } from '../shared/catch.model';
 
 export class LivewellComponent implements OnInit {
 
-  catches:CatchModel[];
+  catches: CatchModel[];
 
 
   constructor(private firebaseConnection:FirebaseConnectionService) { 
-    this.catches = this.firebaseConnection.getCatches();
+    this.firebaseConnection.getCatches().subscribe(
+        catches => {
+          this.catches = catches as CatchModel[]
+        }
+    )
   }
 
   ngOnInit(): void {
