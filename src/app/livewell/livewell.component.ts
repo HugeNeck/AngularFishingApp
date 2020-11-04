@@ -14,16 +14,13 @@ export class LivewellComponent implements OnInit {
   catches: CatchModel[];
 
 
-  constructor(private firebaseConnection:FirebaseConnectionService) { 
-    this.firebaseConnection.getCatches().subscribe(
-        catches => {
-          this.catches = catches
-        }
-    )
-  }
+  constructor(private firebaseConnection:FirebaseConnectionService) { }
 
   ngOnInit(): void {
- 
+    this.firebaseConnection.getCatches().subscribe(
+      catches => {
+        this.catches = catches
+      }
+  )
   }
-
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // import {AngularFireDatabase} from '@angular/fire/database'
 
 @Component({
@@ -6,6 +6,11 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'FishingAppAngular';
+export class AppComponent implements OnInit{
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
 }

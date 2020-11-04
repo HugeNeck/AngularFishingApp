@@ -1,6 +1,13 @@
 <div class="container">
   <div class="title">Welcome to the LiveWell!</div>
-  <app-replace></app-replace>
-  <app-livewell></app-livewell>
+  <div class="item">
+ <nav>
+    <a routerLink='/ChooseFisher'> Choose Fisher</a> |
+    <a routerLink='/Replace'> Add Fish</a> |
+    <a routerLink='/Livewell'>View Livewell </a>
+  </nav> 
+  </div>
+  <div class="item">
+  <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>
+</div>
