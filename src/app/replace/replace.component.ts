@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AngularFireAuth} from '@angular/fire/auth'
+
 
 @Component({
   selector: 'app-replace',
@@ -12,14 +12,8 @@ export class ReplaceComponent implements OnInit {
   test: boolean = false;
 
   //works but need to reload page
-  constructor(public angularAuth: AngularFireAuth) {
-    
+  constructor() {
  }
-
-  logOut(){
-    this.angularAuth.signOut()
-    alert('logged out')
-  }
 
   ngOnInit(): void {
     // where you would do someting like fetch from an API

@@ -7,7 +7,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatRadioModule} from '@angular/material/radio';
 
 import { LivewellComponent } from './livewell/livewell.component';
 import { ChooseFisherComponent } from './choose-fisher/choose-fisher.component';
@@ -48,6 +49,7 @@ const firebase = {
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
+    MatRadioModule,
     FormsModule,
     AngularFireModule.initializeApp(firebase),
     AngularFireDatabaseModule,

@@ -1,1 +1,14 @@
-<p>choose-fisher works!</p>
+<div class="fisher">
+    <label id="currentFisher-label">Choose Fisher</label>
+    <mat-radio-group
+      aria-labelledby="currentFisher-label"
+      class="fisher-radio"
+      [(ngModel)]="currentFisher">
+      <mat-radio-button class="fisher-radio-button" *ngFor="let fisher of fishers" [value]="fisher">
+        {{fisher}}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <span>Current Fisher: </span>
+    <span class="fisher-radio-button">{{currentFisher}}</span>
+</div>

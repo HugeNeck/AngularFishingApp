@@ -1,15 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* html, body { height: 100%; flex: 1} */
-/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+/* html, body { height: 100%; flex: 1}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
 
-.container {
-    display: flex; 
-    align-items: center;
-    flex-direction: column;
-    background-color: #416e33;
+* {
+  box-sizing: border-box;
+ }
+ *:before,
+ *:after {
+  box-sizing: border-box;
+ }
+
+ html,
+body {
+ height: 100%;
+ position: relative;
+}
+
+.container { 
+    background-color: #416e33; 
     color: red;
     font-weight: bolder;
+    min-height: 100vh; /* will cover the 100% of viewport */
+    max-height: 100vh;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 50px; /* height of your footer */
   }
 
 .item {
@@ -20,3 +37,10 @@
   font-size: 2em;
   color: red;
 }
+
+footer {
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+ }

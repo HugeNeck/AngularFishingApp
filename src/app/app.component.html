@@ -1,13 +1,18 @@
 <div class="container">
-  <div class="title">Welcome to the LiveWell!</div>
+  <header>
+   <h1 class="title">Welcome to the LiveWell!</h1>
+  </header>
   <div class="item">
- <nav>
-    <a routerLink='/ChooseFisher'> Choose Fisher</a> |
-    <a routerLink='/Replace'> Add Fish</a> |
-    <a routerLink='/Livewell'>View Livewell </a>
-  </nav> 
+    <nav>
+      <a routerLink='/ChooseFisher'> Choose Fisher</a> |
+      <a routerLink='/Replace'> Add Fish</a> |
+      <a routerLink='/Livewell'>View Livewell </a>
+    </nav> 
   </div>
   <div class="item">
-  <router-outlet></router-outlet>
-</div>
+    <router-outlet></router-outlet>
+  </div>
+  <footer>
+    <button (click)="logOut()"  mat-flat-button color="warn" >Logout</button> 
+  </footer>
 </div>
