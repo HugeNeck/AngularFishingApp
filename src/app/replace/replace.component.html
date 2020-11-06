@@ -1,3 +1,28 @@
 <div>
 <h2 [textContent] = "title"></h2>
+    <form #replaceForm="ngForm" (ngSubmit)="onSubmit(replaceForm)"> 
+        <mat-form-field appearance="fill">
+            <mat-label>fishType</mat-label>
+            <input
+                matInput 
+                type="text" 
+                name="fishType" 
+                ngModel
+                required>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+            <mat-label>fishLength</mat-label>
+            <input
+                matInput 
+                type="text"
+                name = "fishLength"
+                ngModel
+                >
+            </mat-form-field> 
+            <br>
+            <button mat-raised-button type="submit">
+               Submit Fish
+            </button>
+    </form>
 </div>

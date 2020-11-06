@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {NgForm} from '@angular/forms';
+import { CatchModel } from '../shared/catch.model';
 
 
 @Component({
@@ -9,11 +11,18 @@ import { Component, OnInit } from '@angular/core';
 export class ReplaceComponent implements OnInit {
 
   title: string ='Add Fish to Well!';
-  test: boolean = false;
+
+   fishType:CatchModel;
+   fishLength:string;
 
   //works but need to reload page
   constructor() {
  }
+
+ 
+ onSubmit(f : NgForm) {
+    alert(f.value.fishType + f.value.fishLength)
+}
 
   ngOnInit(): void {
     // where you would do someting like fetch from an API

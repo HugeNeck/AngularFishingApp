@@ -8,3 +8,7 @@
 .fisher-radio-button{
     color: blue;
 }
+
+#currentFisher-label{
+    font-size: 1.5em;
+}
