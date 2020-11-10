@@ -21,6 +21,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LoginComponent } from './login/login.component';
 
 import {FormsModule} from '@angular/forms'
+import { HttpClientModule } from '@angular/common/http';
+import { WeatherDataComponent } from './weather-data/weather-data.component';
 
 const firebase = {
   apiKey: "AIzaSyAof-ZK4ea9TXcP_5zmVWD1ZMJSvrR8mHw",
@@ -40,7 +42,8 @@ const firebase = {
     ReplaceComponent,
     LivewellComponent,
     ChooseFisherComponent,
-    CatchItemComponent
+    CatchItemComponent,
+    WeatherDataComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ const firebase = {
     MatFormFieldModule,
     MatRadioModule,
     FormsModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(firebase),
     AngularFireDatabaseModule,
     AngularFireStorageModule,

@@ -1,18 +1,21 @@
 <div class="container">
   <header>
-   <h1 class="title">Welcome to the LiveWell!</h1>
+    <h1 class="title">Welcome to the LiveWell!</h1>
+    <img class="fishIcon" src="assets/fishIcon.jpg" alt = "fishIcon">
   </header>
-  <div class="item">
-    <nav>
-      <a routerLink='/ChooseFisher'> Choose Fisher</a> |
-      <a routerLink='/Replace'> Add Fish</a> |
-      <a routerLink='/Livewell'>View Livewell </a>
-    </nav> 
-  </div>
+      <div class="item">
+        <nav>
+          <a routerLink='/ChooseFisher'> Choose Fisher</a> |
+          <a routerLink='/Replace'> Add Fish</a> |
+          <a routerLink='/Livewell'>View Livewell </a>
+        </nav> 
+        </div>
   <div class="item">
     <router-outlet></router-outlet>
   </div>
-  <footer>
-    <button (click)="logOut()"  mat-flat-button color="warn" >Logout</button> 
-  </footer>
 </div>
+
+<footer>
+    <button (click)="logOut()"  mat-flat-button color="warn" >Logout</button> 
+    <app-weather-data class="weatherData"></app-weather-data>
+</footer>

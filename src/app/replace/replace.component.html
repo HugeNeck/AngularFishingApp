@@ -9,9 +9,9 @@
                 name="fishType" 
                 ngModel
                 required>
-            </mat-form-field>
-            <br>
-            <mat-form-field appearance="fill">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
             <mat-label>fishLength</mat-label>
             <input
                 matInput 
@@ -19,10 +19,20 @@
                 name = "fishLength"
                 ngModel
                 >
-            </mat-form-field> 
-            <br>
-            <button mat-raised-button type="submit">
+        </mat-form-field> 
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>fishWeight</mat-label>
+                <input
+                    matInput 
+                    type="text"
+                    name = "fishWeight"
+                    ngModel
+                    >
+        </mat-form-field> 
+        <br>
+        <button mat-raised-button type="submit">
                Submit Fish
-            </button>
+        </button>
     </form>
 </div>

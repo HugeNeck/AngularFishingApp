@@ -1,2 +1,31 @@
+.fishIcon{
+    width: 160px;
+    height: 100px;
+}
+
+.container { 
+    background-color: #416e33; 
+    color: red;
+    font-weight: bolder;
+    min-height: 100vh; /* will cover the 100% of viewport */
+    max-height: 100vh;
+    overflow: hidden;
+    display: block;
+    position: relative;
+  }
+
+.item {
+  padding: 1em;
+  display:flex;
+} 
 
 
+footer {
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    align-self: stretch;
+ }

@@ -14,6 +14,9 @@ export class ReplaceComponent implements OnInit {
 
    fishType:CatchModel;
    fishLength:string;
+   fishWeight: string;
+   currentFisher: string;
+   currentWeather:string
 
   //works but need to reload page
   constructor() {
@@ -21,7 +24,7 @@ export class ReplaceComponent implements OnInit {
 
  
  onSubmit(f : NgForm) {
-    alert(f.value.fishType + f.value.fishLength)
+    alert(f.value.fishType + f.value.fishLength + f.value.fishWeight)
 }
 
   ngOnInit(): void {
