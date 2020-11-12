@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { CatchModel } from '../shared/catch.model';
-
+import { WeatherDataService } from '../services/weather-data.service';
+import { ChosenFisherService } from '../services/chosen-fisher.service';
 
 @Component({
   selector: 'app-replace',
@@ -16,20 +17,31 @@ export class ReplaceComponent implements OnInit {
    fishLength:string;
    fishWeight: string;
    currentFisher: string;
-   currentWeather:string
+   currentWeather:string;
 
   //works but need to reload page
-  constructor() {
- }
 
- 
- onSubmit(f : NgForm) {
-    alert(f.value.fishType + f.value.fishLength + f.value.fishWeight)
+  constructor( private wds: WeatherDataService, private cfs : ChosenFisherService) { }
+
+  
+ngOnInit(): void {
+  this.wds.getWeatherData().subscribe(
+    data => {
+     if(data.cod !== 200)
+        this.currentWeather = data.cod
+          else this.currentWeather = data.weather[0].description
+    }
+  );
+  this.cfs.currentFisher.subscribe( fisher => {
+    this.currentFisher = fisher;
+  });
 }
 
-  ngOnInit(): void {
-    // where you would do someting like fetch from an API
-  }
+ onSubmit(f : NgForm) {
+    alert(f.value.fishType + f.value.fishLength + f.value.fishWeight
+      + this.currentWeather)
+}
+
 
   ngAfterViewInit():void{
     // child components are loaded

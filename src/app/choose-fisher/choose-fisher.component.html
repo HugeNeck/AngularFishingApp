@@ -3,7 +3,8 @@
     <mat-radio-group
       aria-labelledby="currentFisher-label"
       class="fisher-radio"
-      [(ngModel)]="currentFisher">
+      [(ngModel)]="currentFisher"
+      >
       <mat-radio-button class="fisher-radio-button" *ngFor="let fisher of fishers" [value]="fisher">
         {{fisher}}
       </mat-radio-button>

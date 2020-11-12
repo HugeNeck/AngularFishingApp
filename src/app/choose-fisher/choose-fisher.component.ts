@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import {FirebaseConnectionService} from '../services/firebase-connection.service'
+import { ChosenFisherService } from '../services/chosen-fisher.service';
 
 
 @Component({
@@ -9,15 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChooseFisherComponent implements OnInit {
 
-  currentFisher: string;
+  currentFisher:string;
+  
+  fishers: string[];
 
-  fishers: string[] = ['Joel', 'Justin', 'Fez', 'Dan'];
+  constructor(private chosenFisherService : ChosenFisherService) {
 
-  // private firebaseConnection:FirebaseConnectionService
+  }
 
-  constructor() { }
+  
+  getFishers() : void {
+    this.fishers = this.chosenFisherService.getFishers();
+  }
+
+  // getFisher(): void{
+  //   this.currentFisher = this.chosenFisherService.currentFisher.toString();
+  // }
+
+  setFisher(){
+    this.chosenFisherService.setFisher(this.currentFisher);
+  }
 
   ngOnInit(): void {
+    this.getFishers();
+    this.chosenFisherService.currentFisher.subscribe(( newFisher: string) => {
+      this.currentFisher = newFisher;
+      this.setFisher();
+   });
   }
 
 }
