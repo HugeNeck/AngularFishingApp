@@ -5,7 +5,12 @@
       class="fisher-radio"
       [(ngModel)]="currentFisher"
       >
-      <mat-radio-button class="fisher-radio-button" *ngFor="let fisher of fishers" [value]="fisher">
+      <mat-radio-button 
+      class="fisher-radio-button" 
+      *ngFor="let fisher of fishers" 
+      [value]="fisher"
+      (change)="fisherChanged($event)"
+      >
         {{fisher}}
       </mat-radio-button>
     </mat-radio-group>

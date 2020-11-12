@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatRadioChange } from '@angular/material/radio';
 import { ChosenFisherService } from '../services/chosen-fisher.service';
 
 
@@ -9,33 +10,30 @@ import { ChosenFisherService } from '../services/chosen-fisher.service';
 })
 export class ChooseFisherComponent implements OnInit {
 
-  currentFisher:string;
+  currentFisher: string;
   
   fishers: string[];
 
-  constructor(private chosenFisherService : ChosenFisherService) {
-
+  constructor(private cfs : ChosenFisherService) {
   }
 
   
   getFishers() : void {
-    this.fishers = this.chosenFisherService.getFishers();
+    this.fishers = this.cfs.getFishers();
   }
 
-  // getFisher(): void{
-  //   this.currentFisher = this.chosenFisherService.currentFisher.toString();
-  // }
+  getFisher() : void {
+    this.currentFisher = this.cfs.getFisher();
+  }
 
-  setFisher(){
-    this.chosenFisherService.setFisher(this.currentFisher);
+
+  fisherChanged( event: MatRadioChange){
+   this.cfs.setFisher(event.value)
   }
 
   ngOnInit(): void {
     this.getFishers();
-    this.chosenFisherService.currentFisher.subscribe(( newFisher: string) => {
-      this.currentFisher = newFisher;
-      this.setFisher();
-   });
+    this.getFisher();
   }
 
 }

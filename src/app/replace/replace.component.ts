@@ -32,9 +32,7 @@ ngOnInit(): void {
           else this.currentWeather = data.weather[0].description
     }
   );
-  this.cfs.currentFisher.subscribe( fisher => {
-    this.currentFisher = fisher;
-  });
+  this.currentFisher = this.cfs.currentFisher;
 }
 
  onSubmit(f : NgForm) {
@@ -42,10 +40,6 @@ ngOnInit(): void {
       + this.currentWeather)
 }
 
-
-  ngAfterViewInit():void{
-    // child components are loaded
-  }
 
   ngOnDestroy(): void{
     // last function that is called
