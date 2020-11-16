@@ -1,5 +1,8 @@
 <div>
 <h2 [textContent] = "title"></h2>
+    <span > Currently Selected Fisher: </span>
+    <span *ngIf=(currentFisher) class="selectedFisher"> {{currentFisher}}</span>
+    <span *ngIf=(!currentFisher) class="selectedFisher"> Please Select!</span>
     <form #replaceForm="ngForm" (ngSubmit)="onSubmit(replaceForm)"> 
         <mat-form-field appearance="fill">
             <mat-label>fishType</mat-label>
@@ -31,9 +34,31 @@
                     >
         </mat-form-field> 
         <br>
+        <!-- <mat-form-field appearance="fill">
+            <mat-label>Upload Image</mat-label>
+                <input
+                    matInput 
+                    type="file"
+                    name = "fishImage"
+                    accept=".png, .jpg"
+                    ngModel
+                    >
+        </mat-form-field> 
+        <br> -->
+        <label for="file">Upload Image:</label>
+                <input
+                    type="file"
+                    id="file"
+                    name="fishImage"
+                    [(ngModel)]="fishImage"
+                    />
+        <div *ngIf=(fishImage)>
+        <img *ngIf=(fishImage) src={{fishImageURL}} alt="fishPic"/>
+        </div>
+        <div>
         <button mat-raised-button type="submit">
                Submit Fish
         </button>
+        </div>
     </form>
-    <div> test {{currentFisher}}</div>
 </div>
