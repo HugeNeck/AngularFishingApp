@@ -9,7 +9,8 @@ import { CatchModel } from '../shared/catch.model';
 })
 export class FirebaseConnectionService { 
 
-  dataKey:string;
+  filePath: string;
+  dataKey: string;
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
 
@@ -22,7 +23,7 @@ export class FirebaseConnectionService {
   
   //Add catch to database
   setCatch(fishType: string, fishLength: string, fishWeight: string, currentFisher: string, 
-    currentWeather: string, loggedBy: string, image: Blob) {
+    currentWeather: string, loggedBy: string, image:File) {
     this.angularData.list('/users/u7FOtTJGasMlqIclUFNHuT0uCF72/').push({
       fishType: fishType,
       fishWeight: fishWeight,
@@ -30,25 +31,23 @@ export class FirebaseConnectionService {
       fisher: currentFisher,
       loggedBy: loggedBy,
       weatherData: currentWeather
-    }).then(key => {
-      this.dataKey = key.toString();
-      alert("submission successful")
-       
-      if (image != null) {  
-           this.uploadImage(image, this.dataKey);
-           this.angularData.list('users/u7FOtTJGasMlqIclUFNHuT0uCF72/' + this.dataKey).update(
-            "u7FOtTJGasMlqIclUFNHuT0uCF72", this.dataKey
-           )
-       }
+    }).then(ref => {
 
-    });
+      //DATAKEY is entire path instead of only last chunk
+      this.dataKey = ref.key;
+      alert("submission successful");
+           this.uploadImage(image, this.dataKey);
+           this.angularData.list('/users/u7FOtTJGasMlqIclUFNHuT0uCF72/').update(
+            this.dataKey,
+            {photoURI: this.dataKey}
+      );
+    })
   }
 
-  uploadImage(image: Blob, name: string){
-    // const response = await fetch(uri);
-    // const blob = await response.blob();
-    this.ref = this.angularStorage.ref("images/" + name);
-    this.task = this.ref.put(image);
-    console.log("image upload succesful")
+   uploadImage(image: File, dataKey: string){
+    this.filePath = "images/" + dataKey;
+    this.ref = this.angularStorage.ref( this.filePath);
+    this.task = this.angularStorage.upload( this.filePath, image)
+    alert("image upload succesful")
   }
 }

@@ -22,9 +22,10 @@ export class ReplaceComponent implements OnInit {
    currentFisher: string;
    currentWeather:string;
    loggedBy: string;
-   fishImage: Blob;
 
-  //works but need to reload page
+   fishImage: File;
+   fishImageURL: string;
+   
 
   constructor( private angularAuth: AngularFireAuth, private fcs:FirebaseConnectionService, private wds: WeatherDataService, private cfs : ChosenFisherService) { }
 
@@ -44,11 +45,22 @@ export class ReplaceComponent implements OnInit {
 
   onSubmit(f: NgForm) {
     if (!this.currentFisher) { alert('must select fisher'); return }
-    if (!f.value.fishImage) { alert('must select Image'); return; }
+    if (!this.fishImageURL) { alert('must select Image'); return; }
     if (!f.value.fishLength) { alert('must select fishLength'); return; }
-    this.fcs.setCatch(f.value.fishType, f.value.fishLength, f.value.fishWeight, this.currentFisher, this.currentWeather, this.loggedBy, f.value.fishImage);
+    this.fcs.setCatch(f.value.fishType, f.value.fishLength, f.value.fishWeight,
+      this.currentFisher, this.currentWeather, this.loggedBy, this.fishImage);
   }
 
+  readUrl(event) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      reader.onload = (event:any) => {
+      this.fishImageURL = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+      this.fishImage = event.target.files[0];
+    }
+  }
 
   ngOnDestroy(): void {
     // last function that is called

@@ -34,26 +34,15 @@
                     >
         </mat-form-field> 
         <br>
-        <!-- <mat-form-field appearance="fill">
-            <mat-label>Upload Image</mat-label>
-                <input
-                    matInput 
-                    type="file"
-                    name = "fishImage"
-                    accept=".png, .jpg"
-                    ngModel
-                    >
-        </mat-form-field> 
-        <br> -->
         <label for="file">Upload Image:</label>
                 <input
                     type="file"
                     id="file"
-                    name="fishImage"
                     [(ngModel)]="fishImage"
+                    (change)="readUrl($event)"
                     />
-        <div *ngIf=(fishImage)>
-        <img *ngIf=(fishImage) src={{fishImageURL}} alt="fishPic"/>
+        <div *ngIf=(fishImageURL)>
+        <img class="picture" *ngIf=(fishImageURL) [src]="fishImageURL" alt="fishPic"/>
         </div>
         <div>
         <button mat-raised-button type="submit">
