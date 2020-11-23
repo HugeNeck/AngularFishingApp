@@ -7,8 +7,8 @@ import { CatchModel } from '../shared/catch.model';
 @Injectable({
   providedIn: 'root'
 })
-export class FirebaseConnectionService { 
-
+export class FirebaseConnectionService {
+ 
   filePath: string;
   dataKey: string;
   ref: AngularFireStorageReference;
@@ -16,11 +16,19 @@ export class FirebaseConnectionService {
 
   constructor(private angularData: AngularFireDatabase, private angularStorage: AngularFireStorage) { }
 
+
+  //get catch from database
   getCatches():Observable<CatchModel[]> {
-    return( this.angularData.list<CatchModel>('/users/u7FOtTJGasMlqIclUFNHuT0uCF72/').valueChanges()
+    return( this.angularData.list<CatchModel>('/users/Hv3Ql8pSaBfV27hZzCfRnlbRfKx2/').valueChanges()
     )
   }
-  
+
+  getPhoto(uri:string): Observable<any> {
+    const path = '/images/' + uri;
+    const ref = this.angularStorage.ref(path)
+    return ref.getDownloadURL();
+  } 
+
   //Add catch to database
   setCatch(fishType: string, fishLength: string, fishWeight: string, currentFisher: string, 
     currentWeather: string, loggedBy: string, image:File) {
@@ -33,7 +41,6 @@ export class FirebaseConnectionService {
       weatherData: currentWeather
     }).then(ref => {
 
-      //DATAKEY is entire path instead of only last chunk
       this.dataKey = ref.key;
       alert("submission successful");
            this.uploadImage(image, this.dataKey);
@@ -44,10 +51,10 @@ export class FirebaseConnectionService {
     })
   }
 
-   uploadImage(image: File, dataKey: string){
+   async uploadImage(image: File, dataKey: string){
     this.filePath = "images/" + dataKey;
     this.ref = this.angularStorage.ref( this.filePath);
-    this.task = this.angularStorage.upload( this.filePath, image)
-    alert("image upload succesful")
+    this.task = this.angularStorage.upload( this.filePath, image);
+    alert("image upload succesful");
   }
 }

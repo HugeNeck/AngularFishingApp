@@ -9,6 +9,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatCardModule} from '@angular/material/card';
 
 import { LivewellComponent } from './livewell/livewell.component';
 import { ChooseFisherComponent } from './choose-fisher/choose-fisher.component';
@@ -54,6 +55,7 @@ const firebase = {
     MatFormFieldModule,
     MatRadioModule,
     FormsModule,
+    MatCardModule,
     HttpClientModule,
     AngularFireModule.initializeApp(firebase),
     AngularFireDatabaseModule,
