@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import {AngularFireDatabase} from '@angular/fire/database';
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { CatchModel } from '../shared/catch.model';
+import { ChosenFisherService } from './chosen-fisher.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +15,30 @@ export class FirebaseConnectionService {
   dataKey: string;
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
+  userId: string;
 
-  constructor(private angularData: AngularFireDatabase, private angularStorage: AngularFireStorage) { }
-
+  constructor(private angularData: AngularFireDatabase, private angularStorage: AngularFireStorage, 
+    public angularAuth: AngularFireAuth, private cfs: ChosenFisherService) { }
 
   //get catch from database
-  getCatches():Observable<CatchModel[]> {
-    return( this.angularData.list<CatchModel>('/users/Hv3Ql8pSaBfV27hZzCfRnlbRfKx2/').valueChanges()
+  getCatches(selected:string):Observable<CatchModel[]> {
+    if(selected === 'loggedIn'){
+      this.userId = 'u7FOtTJGasMlqIclUFNHuT0uCF72'
+    }
+    if(selected === 'chosen'){
+      this.userId = this.cfs.currentFisherUID;
+    }
+    return( this.angularData.list<CatchModel>('/users/' + this.userId).valueChanges()
     )
+  }
+
+  getAllCatches(): Observable<any> {
+    //  const fishersArray = this.cfs.getAllUID();
+      // const joelData = this.angularData.list<CatchModel>('/users/' + fishersArray[0]).valueChanges();
+      // const justinData = this.angularData.list<CatchModel>('/users/' + fishersArray[1]).valueChanges();
+      // const fezData = this.angularData.list<CatchModel>('/users/' + fishersArray[2]).valueChanges();
+      // const danData = this.angularData.list<CatchModel>('/users/' + fishersArray[3]).valueChanges();
+     return( this.angularData.list<any>('/users/').valueChanges())
   }
 
   getPhoto(uri:string): Observable<any> {

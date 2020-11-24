@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
 // import { Subject, Observable } from 'rxjs';
 
 @Injectable({
@@ -7,7 +8,13 @@ import { Injectable } from '@angular/core';
 export class ChosenFisherService {
 
   currentFisher: string;
+  currentFisherUID: string;
   fishers: string[] = ['Joel', 'Justin', 'Fez', 'Dan'];
+  fishersUID: string[] = ['u7FOtTJGasMlqIclUFNHuT0uCF72',
+  'euaOW4QZR1V5LsvRqXgF2A51Cam1',
+  'nH32Rcx6CugwwtcI5V5ggrszQOH3',
+  'Hv3Ql8pSaBfV27hZzCfRnlbRfKx2'];
+  loggedInUID: string;
 
   constructor() {}
 
@@ -21,6 +28,36 @@ export class ChosenFisherService {
 
   setFisher(fisher:string){
     this.currentFisher = fisher;
+    this.setCurrentUID(fisher);
   }
 
+  setFisherByUID(UID:string){
+    if(UID === this.fishersUID[0]) {this.setFisher(this.fishers[0])}
+    if(UID === this.fishersUID[1]) {this.setFisher(this.fishers[1])}
+    if(UID === this.fishersUID[2]) {this.setFisher(this.fishers[2])}
+    if(UID === this.fishersUID[3]) {this.setFisher(this.fishers[3])}
+  }
+
+  setCurrentUID(fisher:string):void{
+    if(fisher === this.fishers[0]) this.currentFisherUID=this.fishersUID[0];
+    if(fisher === this.fishers[1]) this.currentFisherUID=this.fishersUID[1];
+    if(fisher === this.fishers[2]) this.currentFisherUID=this.fishersUID[2];
+    if(fisher === this.fishers[3]) this.currentFisherUID=this.fishersUID[3];
+  }
+
+  getcurrentUID():string{
+    return this.currentFisherUID;
+  }
+
+  setLoggedInUID(UID:string):void{
+    this.loggedInUID = UID;
+  }
+
+  getLoggedInUID():string{
+    return this.loggedInUID;
+  }
+
+  getAllUID():string[]{
+    return this.fishersUID;
+  }
 }

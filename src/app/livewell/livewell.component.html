@@ -1,7 +1,20 @@
+<div class= "livewellContainer">
+    <mat-form-field appearance="fill">
+        <mat-label>Select an option</mat-label>
+        <mat-select [(value)]="selected">
+          <mat-option>Please Select</mat-option>
+          <mat-option value="loggedIn">Your Fish</mat-option>
+          <mat-option value="chosen">Selected Fishers</mat-option>
+          <mat-option value="leaderBoard">LeaderBoard</mat-option>
+        </mat-select>
+      </mat-form-field>
 <div class="livewell"> 
-<app-catch-item 
+
+<app-catch-item
 *ngFor="let catch of catches"
 [catch] = "catch"
 > 
 </app-catch-item>
+
+</div>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth'
 import {NgForm} from '@angular/forms';
+import { ChosenFisherService } from '../services/chosen-fisher.service';
 
 @Component({
   selector: 'app-login',
@@ -11,10 +12,12 @@ export class LoginComponent implements OnInit {
 
   isLoggedIn:boolean = false;
 
-  constructor(public angularAuth: AngularFireAuth) {
+  constructor(public angularAuth: AngularFireAuth, private cfs: ChosenFisherService) {
       this.angularAuth.onAuthStateChanged( user => {
         if(user){
-          this.isLoggedIn = true
+          this.isLoggedIn = true;
+          this.cfs.setFisherByUID(user.uid);
+          this.cfs.setLoggedInUID(user.uid);
         }else{
           this.isLoggedIn = false;
         }
