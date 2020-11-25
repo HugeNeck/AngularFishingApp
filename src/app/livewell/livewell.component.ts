@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
+import { MatSelectChange } from '@angular/material/select';
 import { FirebaseConnectionService } from '../services/firebase-connection.service'
 
 import { CatchModel } from '../shared/catch.model';
@@ -12,21 +13,25 @@ import { CatchModel } from '../shared/catch.model';
 export class LivewellComponent implements OnInit {
 
   catches: CatchModel[];
-  selected: string = 'leaderBoard'
-
+  selected: string;
 
   constructor(private firebaseConnection: FirebaseConnectionService) {
    }
 
-  ngOnInit(): void {
-    this.catches = [];
-    if (this.selected !== 'leaderBoard') {
-      this.firebaseConnection.getCatches(this.selected).subscribe(
+    ngOnInit():void {
+      this.catches = [];
+    }
+
+
+  onChange(event: MatSelectChange) {
+    alert(event.value)
+    if (event.value !== 'leaderBoard') {
+      this.firebaseConnection.getCatches(event.value).subscribe(
         catches => {
          catches.map( item => 
           this.catches.push(item))
         })
-    } else if (this.selected === 'leaderBoard') {
+    } else if (event.value === 'leaderBoard') {
       this.firebaseConnection.getAllCatches().subscribe(
         fisher => {
         fisher.map( item => {
@@ -39,4 +44,5 @@ export class LivewellComponent implements OnInit {
       })
     } else return null;
   }
+
 }
