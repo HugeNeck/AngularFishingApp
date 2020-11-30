@@ -24,7 +24,7 @@ export class LivewellComponent implements OnInit {
 
 
   onChange(event: MatSelectChange) {
-    alert(event.value)
+    this.catches = [];
     if (event.value !== 'leaderBoard') {
       this.firebaseConnection.getCatches(event.value).subscribe(
         catches => {

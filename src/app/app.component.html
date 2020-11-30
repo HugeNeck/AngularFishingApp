@@ -1,13 +1,13 @@
 <div class="container">
   <header>
-    <h1 class="title">Welcome to the LiveWell!</h1>
+    <h1 class="title">Welcome to the LiveWell {{loggedIn}}! You currently have {{(chosenFisher === loggedIn?'Yourself':chosenFisher)}} selected </h1>
     <img class="fishIcon" src="assets/fishIcon.jpg" alt = "fishIcon">
   </header>
       <div class="item">
         <nav>
-          <a routerLink='/ChooseFisher'> Choose Fisher</a> |
-          <a routerLink='/Replace'> Add Fish</a> |
-          <a routerLink='/Livewell'>View Livewell </a>
+          <a routerLinkActive="isSelected" [routerLinkActiveOptions]="{exact: true}" routerLink='/ChooseFisher'> Choose Fisher</a> |
+          <a routerLinkActive="isSelected" [routerLinkActiveOptions]="{exact: true}" routerLink='/Replace'> Add Fish</a> |
+          <a routerLinkActive="isSelected" [routerLinkActiveOptions]="{exact: true}" routerLink='/Livewell'>View Livewell </a>
         </nav> 
         </div>
   <div class="item">

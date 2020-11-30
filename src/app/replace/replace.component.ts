@@ -38,7 +38,7 @@ export class ReplaceComponent implements OnInit {
         else this.currentWeather = data.weather[0].description
       }
     );
-    this.currentFisher = this.cfs.currentFisher;
+    this.currentFisher = this.cfs.getFisher();
     this.angularAuth.currentUser.then(user => this.loggedBy = user.email);
 
   }

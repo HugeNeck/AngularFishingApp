@@ -14,7 +14,7 @@ export class ChooseFisherComponent implements OnInit {
   
   fishers: string[];
 
-  constructor(private cfs : ChosenFisherService) {
+  constructor(public cfs : ChosenFisherService) {
   }
 
   

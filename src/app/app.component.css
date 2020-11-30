@@ -29,3 +29,9 @@ footer {
     flex-direction: row;
     align-self: stretch;
  }
+
+ .isSelected{
+  font-weight: bolder;
+  font-size: 150%;
+ }
+

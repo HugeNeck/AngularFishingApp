@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import {AngularFireDatabase} from '@angular/fire/database'
 import {AngularFireAuth} from '@angular/fire/auth';
+import { ChosenFisherService } from './services/chosen-fisher.service';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +11,19 @@ import {AngularFireAuth} from '@angular/fire/auth';
 export class AppComponent implements OnInit{
 
   title:string="FishingAppAngular"
-  
-  constructor(public angularAuth: AngularFireAuth) { }
+  loggedIn: string;
+  chosenFisher:string;
+
+  constructor(public angularAuth: AngularFireAuth, public cfs : ChosenFisherService) { }
 
   ngOnInit(): void {
+      this.loggedIn = this.cfs.getLoggedInUser();
+      this.chosenFisher = this.cfs.getFisher();
+      this.cfs.currentFisherChange.subscribe( value => {
+      this.chosenFisher = value;
+     })
   }
+
   
   logOut(){
     this.angularAuth.signOut()

@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
         if(user){
           this.isLoggedIn = true;
           this.cfs.setFisherByUID(user.uid);
-          this.cfs.setLoggedInUID(user.uid);
+          this.cfs.setLoggedInUser(user.uid);
         }else{
           this.isLoggedIn = false;
         }

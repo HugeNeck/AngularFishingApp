@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
-// import { Subject, Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +7,9 @@ import { of } from 'rxjs';
 export class ChosenFisherService {
 
   currentFisher: string;
+
+  currentFisherChange: Subject<string> = new Subject<string>();
+
   currentFisherUID: string;
   fishers: string[] = ['Joel', 'Justin', 'Fez', 'Dan'];
   fishersUID: string[] = ['u7FOtTJGasMlqIclUFNHuT0uCF72',
@@ -15,8 +17,13 @@ export class ChosenFisherService {
   'nH32Rcx6CugwwtcI5V5ggrszQOH3',
   'Hv3Ql8pSaBfV27hZzCfRnlbRfKx2'];
   loggedInUID: string;
+  loggedInUser: string;
 
-  constructor() {}
+  constructor() {
+    this.currentFisherChange.subscribe((fisher) => {
+      this.currentFisher = fisher
+    })
+  }
 
   getFishers():string[]{
     return this.fishers;
@@ -27,7 +34,7 @@ export class ChosenFisherService {
   }
 
   setFisher(fisher:string){
-    this.currentFisher = fisher;
+    this.currentFisherChange.next(fisher)
     this.setCurrentUID(fisher);
   }
 
@@ -47,6 +54,15 @@ export class ChosenFisherService {
 
   getcurrentUID():string{
     return this.currentFisherUID;
+  }
+
+  setLoggedInUser(UID:string){
+    this.setLoggedInUID(UID);
+    this.loggedInUser = this.getFisher();
+  }
+
+  getLoggedInUser():string{
+    return this.loggedInUser;
   }
 
   setLoggedInUID(UID:string):void{
