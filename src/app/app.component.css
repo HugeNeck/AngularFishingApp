@@ -7,27 +7,33 @@
     background-color: #416e33; 
     color: red;
     font-weight: bolder;
-    min-height: 100vh; /* will cover the 100% of viewport */
-    max-height: 100vh;
-    overflow: hidden;
-    display: block;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    size: 100vh;
+    align-items: center;
+    justify-content: space-evenly;
   }
 
 .item {
   padding: 1em;
-  display:flex;
+  flex:1;
 } 
 
 
-footer {
-    height: 40px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    display:flex;
+.main{
+  display:flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+.title{
+  font-size: 2em;
+  color: red;
+}
+
+.footer {
+    display: flex;
     flex-direction: row;
-    align-self: stretch;
  }
 
  .isSelected{

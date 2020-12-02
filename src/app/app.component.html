@@ -1,21 +1,20 @@
 <div class="container">
-  <header>
-    <h1 class="title">Welcome to the LiveWell {{loggedIn}}! You currently have {{(chosenFisher === loggedIn?'Yourself':chosenFisher)}} selected </h1>
-    <img class="fishIcon" src="assets/fishIcon.jpg" alt = "fishIcon">
-  </header>
-      <div class="item">
-        <nav>
-          <a routerLinkActive="isSelected" [routerLinkActiveOptions]="{exact: true}" routerLink='/ChooseFisher'> Choose Fisher</a> |
-          <a routerLinkActive="isSelected" [routerLinkActiveOptions]="{exact: true}" routerLink='/Replace'> Add Fish</a> |
-          <a routerLinkActive="isSelected" [routerLinkActiveOptions]="{exact: true}" routerLink='/Livewell'>View Livewell </a>
-        </nav> 
-        </div>
+  <div class="container">
+      <div class="title">Welcome to the LiveWell {{loggedIn}}! You currently have {{(chosenFisher === loggedIn?'Yourself':chosenFisher)}} selected </div>
+      <img class="fishIcon" src="assets/fishIcon.jpg" alt = "fishIcon">
+  </div>
   <div class="item">
-    <router-outlet></router-outlet>
+          <nav>
+            <a routerLinkActive="isSelected" [routerLinkActiveOptions]="{exact: true}" routerLink='/ChooseFisher'> Choose Fisher</a> |
+            <a routerLinkActive="isSelected" [routerLinkActiveOptions]="{exact: true}" routerLink='/Replace'> Add Fish</a> |
+            <a routerLinkActive="isSelected" [routerLinkActiveOptions]="{exact: true}" routerLink='/Livewell'>View Livewell </a>
+          </nav> 
+  </div>
+  <div class="main">
+      <router-outlet></router-outlet>
+  </div>
+  <div class="footer">
+      <button (click)="logOut()"  mat-flat-button color="warn" >Logout</button> 
+      <app-weather-data class="weatherData"></app-weather-data>
   </div>
 </div>
-
-<footer>
-    <button (click)="logOut()"  mat-flat-button color="warn" >Logout</button> 
-    <app-weather-data class="weatherData"></app-weather-data>
-</footer>
