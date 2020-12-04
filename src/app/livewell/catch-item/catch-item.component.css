@@ -1,5 +1,16 @@
+mat-card img{
+    object-fit: cover;
+    max-height: 300px;
+}
+
+
+:host{
+    display: flex;
+    flex: 1 0 auto;
+}
+
 .fishCard{
-    flex: 1;
-    margin-right: 10px;
-    align-items: stretch;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    max-width: 300px;
 }
