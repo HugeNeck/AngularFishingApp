@@ -24,14 +24,15 @@ export class LivewellComponent implements OnInit {
 
 
   onChange(event: MatSelectChange) {
-    this.catches = [];
     if (event.value !== 'leaderBoard') {
+      this.catches = [];
       this.firebaseConnection.getCatches(event.value).subscribe(
         catches => {
          catches.map( item => 
           this.catches.push(item))
         })
     } else if (event.value === 'leaderBoard') {
+      this.catches=[];
       this.firebaseConnection.getAllCatches().subscribe(
         fisher => {
         fisher.map( item => {
