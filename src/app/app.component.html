@@ -17,4 +17,7 @@
       <button (click)="logOut()"  mat-flat-button color="warn" >Logout</button> 
       <app-weather-data class="weatherData"></app-weather-data>
   </div>
+  <div *ngIf="!isOpen">
+    <button mat-button (click)="openSidenav()">Open Sidebar</button>
+  </div>
 </div>

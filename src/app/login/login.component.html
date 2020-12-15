@@ -1,31 +1,42 @@
 
-<div 
-*ngIf="!isLoggedIn; then thenBlock; else elseBlock"></div> 
+  <mat-sidenav-container class="container">
 
-<ng-template #thenBlock>
-    <div class="container">
-    <h1 class="title">Please Login to LiveWell App</h1>
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-        <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input name="email" ngModel matInput type="email">
-        </mat-form-field>
-        <br>
-        <mat-form-field appearance="fill">
-        <mat-label>Password</mat-label>
-        <input name = "password" ngModel matInput type="text">
-        </mat-form-field> 
-        <br>
-        <button mat-raised-button type="submit">
-           Login
-        </button>
-    </form>
-    </div>
-</ng-template>
+    <mat-sidenav #sidenav *ngIf= "isLoggedIn" mode="side" position="end" opened>
+    <app-side-bar></app-side-bar>
+    <p><button mat-button (click)="closeSidenav()">Close</button></p>
+    </mat-sidenav>
 
-<ng-template #elseBlock>
-<div class="container">
-<app-root></app-root>
-</div>
-</ng-template>
+    <mat-sidenav-content>
+    
+        <div 
+        *ngIf="!isLoggedIn; then thenBlock; else elseBlock"></div> 
 
+        <ng-template #thenBlock>
+            <div class="container">
+            <h1 class="title">Please Login to LiveWell App</h1>
+            <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+                <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input name="email" ngModel matInput type="email">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input name = "password" ngModel matInput type="text">
+                </mat-form-field> 
+                <br>
+                <button mat-raised-button type="submit">
+                Login
+                </button>
+            </form>
+            </div>
+        </ng-template>
+
+        <ng-template #elseBlock>
+        <div class="container">
+        <app-root [isOpen]="isOpen" [sidenav]="sidenav"></app-root>
+        </div>
+        </ng-template>
+
+</mat-sidenav-content>
+</mat-sidenav-container>

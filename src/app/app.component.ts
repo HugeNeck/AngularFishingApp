@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 // import {AngularFireDatabase} from '@angular/fire/database'
 import {AngularFireAuth} from '@angular/fire/auth';
+import { MatSidenav } from '@angular/material/sidenav';
 import { ChosenFisherService } from './services/chosen-fisher.service';
 
 @Component({
@@ -9,6 +10,10 @@ import { ChosenFisherService } from './services/chosen-fisher.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
+
+  @Input() isOpen: boolean;
+  @Input() sidenav: MatSidenav;
+
 
   title:string="FishingAppAngular"
   loggedIn: string;
@@ -24,10 +29,15 @@ export class AppComponent implements OnInit{
      })
   }
 
-  
+
   logOut(){
     this.angularAuth.signOut()
     alert('logged out')
+  }
+
+  openSidenav():void{
+    this.sidenav.open();
+    this.isOpen = true;
   }
 
 }

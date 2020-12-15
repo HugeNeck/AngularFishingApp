@@ -11,6 +11,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 import { LivewellComponent } from './livewell/livewell.component';
 import { ChooseFisherComponent } from './choose-fisher/choose-fisher.component';
@@ -26,6 +27,7 @@ import { LoginComponent } from './login/login.component';
 import {FormsModule} from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 import { WeatherDataComponent } from './weather-data/weather-data.component';
+import { SideBarComponent } from './side-bar/side-bar.component';
 
 const firebase = {
   apiKey: "AIzaSyAof-ZK4ea9TXcP_5zmVWD1ZMJSvrR8mHw",
@@ -46,7 +48,8 @@ const firebase = {
     LivewellComponent,
     ChooseFisherComponent,
     CatchItemComponent,
-    WeatherDataComponent
+    WeatherDataComponent,
+    SideBarComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +63,7 @@ const firebase = {
     MatCardModule,
     HttpClientModule,
     MatSelectModule,
+    MatSidenavModule,
     AngularFireModule.initializeApp(firebase),
     AngularFireDatabaseModule,
     AngularFireStorageModule,

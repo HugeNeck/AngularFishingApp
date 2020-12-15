@@ -32,7 +32,7 @@ export class LivewellComponent implements OnInit {
           this.catches.push(item))
         })
     } else if (event.value === 'leaderBoard') {
-      this.catches=[];
+      this.catches= [];
       this.firebaseConnection.getAllCatches().subscribe(
         fisher => {
         fisher.map( item => {

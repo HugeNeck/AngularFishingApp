@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth'
 import {NgForm} from '@angular/forms';
 import { ChosenFisherService } from '../services/chosen-fisher.service';
@@ -11,6 +11,9 @@ import { ChosenFisherService } from '../services/chosen-fisher.service';
 export class LoginComponent implements OnInit {
 
   isLoggedIn:boolean = false;
+  isOpen: boolean;
+
+  @ViewChild('sidenav') sidenav;
 
   constructor(public angularAuth: AngularFireAuth, private cfs: ChosenFisherService) {
       this.angularAuth.onAuthStateChanged( user => {
@@ -24,7 +27,6 @@ export class LoginComponent implements OnInit {
       })
    }
 
-
    onSubmit(f : NgForm) {
     this.angularAuth.signInWithEmailAndPassword(f.value.email, f.value.password)
       .then(() => {
@@ -37,6 +39,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isOpen = true;
+  }
+
+  closeSidenav():void{
+    this.sidenav.close()
+    this.isOpen = false;
   }
 
 }
