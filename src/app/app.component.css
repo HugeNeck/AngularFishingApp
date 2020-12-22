@@ -4,17 +4,21 @@
 }
 
 .container { 
-    background-color: #416e33; 
-    color: red;
-    font-weight: bolder;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  background-color: #416e33; 
+  color: red;
+  font-weight: bolder;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
+  height: 100vh;
+  min-height: 100vh;
   }
+
 
 .item {
   padding: 1em;
-  flex:1;
+  align-self: stretch;
 } 
 
 

@@ -42,6 +42,10 @@ export class LoginComponent implements OnInit {
     this.isOpen = true;
   }
 
+  openSidenav(event):void{
+    this.isOpen = event;
+  }
+
   closeSidenav():void{
     this.sidenav.close()
     this.isOpen = false;

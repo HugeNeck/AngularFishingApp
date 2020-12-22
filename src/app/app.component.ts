@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 // import {AngularFireDatabase} from '@angular/fire/database'
 import {AngularFireAuth} from '@angular/fire/auth';
 import { MatSidenav } from '@angular/material/sidenav';
@@ -14,6 +14,7 @@ export class AppComponent implements OnInit{
   @Input() isOpen: boolean;
   @Input() sidenav: MatSidenav;
 
+  @Output() wasOpened = new EventEmitter<boolean>();
 
   title:string="FishingAppAngular"
   loggedIn: string;
@@ -37,7 +38,7 @@ export class AppComponent implements OnInit{
 
   openSidenav():void{
     this.sidenav.open();
-    this.isOpen = true;
+    this.wasOpened.emit(true);
   }
 
 }
